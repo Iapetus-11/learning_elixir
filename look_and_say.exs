@@ -1,7 +1,7 @@
 look_and_say = fn nstr when is_binary(nstr) ->
     nstr
     |> String.to_charlist()
-    |> then(fn lst -> lst ++ [nil] end)
+    |> then(&(&1 ++ [nil]))
     |> Enum.reduce(%{out: "", cnt: 0, cur: nil}, fn el, acc ->
       cond do
         is_nil(acc.cur) -> %{out: acc.out, cnt: 1, cur: el}
@@ -9,7 +9,7 @@ look_and_say = fn nstr when is_binary(nstr) ->
         true -> %{out: acc.out, cnt: acc.cnt + 1, cur: el}
       end
     end)
-    |> then(fn res -> res.out end)
+    |> then(&(&1.out))
 end
 
 look_and_say = fn n when is_integer(n) ->
