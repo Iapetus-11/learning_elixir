@@ -1,7 +1,7 @@
 # https://leetcode.com/problems/two-sum/
 # Modififed to have cases which should have multiple solutions to get the "target"
 
-two_sum = fn nums, target ->
+two_sum = fn nums, target when is_list(nums) and is_integer(target) ->
   nums = MapSet.new(nums)
 
   Enum.map(nums, fn el ->

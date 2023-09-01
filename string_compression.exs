@@ -1,6 +1,6 @@
 # Modified from https://leetcode.com/problems/string-compression/
 
-string_compress = fn string ->
+string_compress = fn string when is_binary(string) ->
   string
   |> String.graphemes()
   |> then(&(&1 ++ [nil]))
